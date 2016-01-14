@@ -1,8 +1,5 @@
-Overview - Variable Interest Rates
 
-- To gain access to the code, please accept the email invite to the project on hub.jazz.net I have sent you. Once you have access, you can run ‘git clone https://hub.jazz.net/git/apollitt/investmentCalculator' to clone the code.
-
-- You can see my application running on investmentcalculator.mybluemix.net.
+My  application is running on investmentcalculator.mybluemix.net.
 Otherwise you can start a local server in order to run this application. Do this as follows:
 1. Download an install node.js from https://nodejs.org.
 2. Now open a command prompt and locate to the public folder.
