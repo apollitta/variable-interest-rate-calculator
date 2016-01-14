@@ -1,0 +1,35 @@
+{
+    "name": "grunt-postOffice",
+    "version": "0.0.1",
+    "description": "Post office app",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "angular": "^1.4.8",
+        "cfenv": "1.0.x",
+        "cloudant": "^1.4.0",
+        "express": "4.12.x",
+        "grunt": "~0.4.4",
+        "grunt-contrib-cssmin": "latest",
+        "grunt-contrib-jshint": "latest",
+        "grunt-contrib-uglify": "latest",
+        "grunt-contrib-watch": "latest",
+        "jshint-stylish": "latest"
+    },
+    "repository": {},
+    "engines": {
+        "node": "0.12.x"
+    },
+    "devDependencies": {
+        "chai": "^2.2.0",
+        "angular-mocks": "^1.4.8",
+        "karma": "^0.13.19",
+        "karma-cli": "latest",
+        "karma-chrome-launcher": "^0.2.2",
+        "karma-jasmine": "^0.3.6",
+        "grunt-mocha-test": "^0.12.7",
+        "mocha": "latest",
+        "supertest": "^1.1.0"
+    }
+}
