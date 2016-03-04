@@ -5,6 +5,33 @@ describe('Variable Interest Rates tests', function () {
     var interestEstimationsController,
         scope;
 
+    var testData = [[{
+            minBalance: 5000,
+            rate: 3,
+            unconfirmedRate: 3
+            }, {
+            minBalance: 1000,
+            rate: 2,
+            unconfirmedRate: 2
+            }, {
+            minBalance: 0,
+            rate: 1,
+            unconfirmedRate: 1
+            }],
+                   [{
+            minBalance: 5000,
+            rate: 10,
+            unconfirmedRate: 10
+            }, {
+            minBalance: 1000,
+            rate: 20,
+            unconfirmedRate: 20
+            }, {
+            minBalance: 0,
+            rate: 30,
+            unconfirmedRate: 30
+            }]];
+
     beforeEach(inject(function ($rootScope, $controller) {
         scope = $rootScope.$new();
         interestEstimationsController = $controller('interestEstimationsController', {
@@ -19,72 +46,60 @@ describe('Variable Interest Rates tests', function () {
     });
 
     it('get interest rate for balances', function () {
-        testGetInterestRate(0, 1);
-        testGetInterestRate(999, 1);
-        testGetInterestRate(1000, 2);
-        testGetInterestRate(4999, 2);
-        testGetInterestRate(5000, 3);
+
+        for (var j = 0; j < testData.length; j++) {
+            testGetInterestRate(0, testData[j][2].rate, testData[j]);
+            testGetInterestRate(999, testData[j][2].rate, testData[j]);
+            testGetInterestRate(1000, testData[j][1].rate, testData[j]);
+            testGetInterestRate(4999, testData[j][1].rate, testData[j]);
+            testGetInterestRate(5000, testData[j][0].rate, testData[j]);
+        }
     });
 
     it('get future balances - lower interest rate', function () {
-        for (var i = 1; i <= 5; i++) {
-            testGetFutureBalance(500, 1, i);
+        for (var j = 0; j < testData.length; j++) {
+            for (var i = 1; i <= 5; i++) {
+                testGetFutureBalance(500, i, testData[j]);
+            }
         }
     });
     it('get future balances - middle interest rate', function () {
-        for (var i = 1; i <= 5; i++) {
-            testGetFutureBalance(1000, i);
+        for (var j = 0; j < testData.length; j++) {
+            for (var i = 1; i <= 5; i++) {
+                testGetFutureBalance(1000, i, testData[j]);
+            }
         }
     });
     it('get future balances - upper interest rate', function () {
-        for (var i = 1; i <= 5; i++) {
-            testGetFutureBalance(5000, i);
+        for (var j = 0; j < testData.length; j++) {
+            for (var i = 1; i <= 5; i++) {
+                testGetFutureBalance(5000, i, testData[j]);
+            }
         }
     });
     it('get future balances - lower/middle interest rate', function () {
-        for (var i = 1; i <= 5; i++) {
-            testGetFutureBalance(960, i);
+        for (var j = 0; j < testData.length; j++) {
+            for (var i = 1; i <= 5; i++) {
+                testGetFutureBalance(960, i, testData[j]);
+            }
         }
     });
     it('get future balances - middle/upper interest rate', function () {
-        for (var i = 1; i <= 5; i++) {
-            testGetFutureBalance(4800, i);
+        for (var j = 0; j < testData.length; j++) {
+            for (var i = 1; i <= 5; i++) {
+                testGetFutureBalance(4800, i, testData[j]);
+            }
         }
     });
 
-    function testGetInterestRate(balance, expectedInterestRate) {
-        scope.interestRates = [{
-            minBalance: 0,
-            rate: 1,
-            unconfirmedRate: 1
-            }, {
-            minBalance: 1000,
-            rate: 2,
-            unconfirmedRate: 2
-            }, {
-            minBalance: 5000,
-            rate: 3,
-            unconfirmedRate: 3
-            }];
+    function testGetInterestRate(balance, expectedInterestRate, interestRates) {
+        scope.interestRates = interestRates;
 
         expect(scope.getInterestRateForBalance(balance)).toEqual(expectedInterestRate);
     }
 
-    function testGetFutureBalance(balance, numberOfYears) {
-
-        scope.interestRates = [{
-            minBalance: 0,
-            rate: 1,
-            unconfirmedRate: 1
-            }, {
-            minBalance: 1000,
-            rate: 2,
-            unconfirmedRate: 2
-            }, {
-            minBalance: 5000,
-            rate: 3,
-            unconfirmedRate: 3
-            }];
+    function testGetFutureBalance(balance, numberOfYears, interestRates) {
+        scope.interestRates = interestRates;
 
         var futureBalance = balance;
         for (var i = 1; i <= numberOfYears; i++) {

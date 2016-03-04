@@ -21,9 +21,9 @@
         <div>
             <h3>Investment calculator</h3>
             <br>
-            <p ng-bind="isNumericInputValid(balance) ? 'Enter a balance to receive projected future balances:' : 'Make sure the balance you have entered is a positive number' "></p>
+            <p ng-bind="isNumericInputValid(balance.value) ? 'Enter a balance to receive projected future balances:' : 'Make sure the balance you have entered is a positive number' "></p>
             <br>
-            <input class="investment-input" type="number" step="0.01" data-number-to-fixed="2" ng-model="balance"></input>
+            <input class="investment-input" type="number" step="0.01" data-number-to-fixed="2" ng-model="balance.value"></input>
             <br>
             <br>
             <table class="table table-bordered table-hover table-condensed">
@@ -39,7 +39,7 @@
                             <p>{{i}}</p>
                         </td>
                         <td>
-                            <p ng-bind="isNumericInputValid(balance) ? calculateEstimatedFutureBalance(balance, i) : '-'"></p>
+                            <p ng-bind="isNumericInputValid(balance.value) ? calculateEstimatedFutureBalance(balance.value, i) : '-'"></p>
                         </td>
                     </tr>
                 </tbody>
@@ -72,7 +72,14 @@
                         </tbody>
                     </table>
                 </div>
-                <button class="btn btn-primary" type="submit">Update rates</button>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <button class="btn btn-warning" type="button" ng-click="getCurrentRates()">Reset rates</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button class="btn btn-primary" type="submit">Update rates</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

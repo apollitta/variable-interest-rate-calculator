@@ -45,12 +45,28 @@ module.exports = function (grunt) {
                 },
                 src: ['test/mocha/**/*.js']
             },
+        },
+
+        env: {
+            options: {
+                //Shared Options Hash
+            },
+            dev: {
+                VCAP_SERVICES: grunt.file.read('./vcap_services.txt'),
+            }
+        },
+
+        execute: {
+            app: {
+                src: ['app.js']
+            }
         }
     });
 
     grunt.registerTask('minifyCss', ['cssmin']);
     grunt.registerTask('minifyJs', ['uglify']);
     grunt.registerTask('test', ['mochaTest:test']);
+    grunt.registerTask('run', ['env:dev', 'jshint', 'execute:app']);
 
     // ===========================================================================
     // LOAD GRUNT PLUGINS ========================================================
@@ -62,4 +78,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-execute');
+    grunt.loadNpmTasks('grunt-env');
 };

@@ -2,13 +2,17 @@ var app = angular.module('interestEstimations', []);
 
 app.controller('interestEstimationsController', function ($scope, $http) {
 
-    $scope.balance = 0;
+    $scope.balance = {};
+    $scope.balance.value = 0;
     $scope.interestRates = [];
 
-    $http.get('/rates').then(function (res) {
-        $scope.interestRates = res.data.interestRates;
-        $scope.setUnconfirmedInterestRates();
-    });
+    $scope.getCurrentRates = function () {
+        $http.get('/rates').then(function (res) {
+            $scope.interestRates = res.data.interestRates;
+            $scope.setUnconfirmedInterestRates();
+        });
+    };
+    $scope.getCurrentRates();
 
     $scope.calculateEstimatedFutureBalance = function (balance, numberOfYears) {
         if (!$scope.isNumericInputValid(balance)) {
@@ -26,14 +30,13 @@ app.controller('interestEstimationsController', function ($scope, $http) {
 
     $scope.getInterestRateForBalance = function (balance) {
 
-        var rate = [0];
+        var rate = 0;
         $scope.interestRates.forEach(function (interestRate) {
-
-            if (balance >= interestRate.minBalance) {
-                rate.push(interestRate.rate);
+            if (rate === 0 && balance >= interestRate.minBalance) {
+                rate = interestRate.rate;
             }
         });
-        return Math.max.apply(null, rate);
+        return rate;
     };
 
     $scope.updateInterestRates = function () {

@@ -1,11 +1,14 @@
+Overview - Variable Interest Rates
 
-My  application is running on investmentcalculator.mybluemix.net.
+- To gain access to the code, please accept the email invite to the project on hub.jazz.net I have sent you. Once you have access, you can run ‘git clone https://hub.jazz.net/git/apollitt/investmentCalculator' to clone the code.
+
+- You can see my application running on investmentcalculator.mybluemix.net.
 Otherwise you can start a local server in order to run this application. Do this as follows:
 1. Download an install node.js from https://nodejs.org.
 2. Now open a command prompt and locate to the public folder.
 3. Run the command ‘npm install’.
-3. Run the command ‘node app.js’ to start the local server.
-4. Go to the URL written in the command prompt (e.g. http://localhost:6001) and you will be directed to the webpage.
+4. Run the command ‘grunt run’ to start the local server.
+5. Go to the URL written in the command prompt (e.g. http://localhost:6001) and you will be directed to the webpage.
 
 Front-end
 - The index file is located at public/index.html.

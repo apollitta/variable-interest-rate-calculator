@@ -1,3 +1,4 @@
+//TO RUN TESTS: karma start karma.conf.js --single-run
 // Karma configuration
 // Generated on Mon Jan 11 2016 16:18:33 GMT+0000 (GMT)
 
