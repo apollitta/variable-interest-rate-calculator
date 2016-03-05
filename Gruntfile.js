@@ -65,7 +65,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('minifyCss', ['cssmin']);
     grunt.registerTask('minifyJs', ['uglify']);
-    grunt.registerTask('test', ['mochaTest:test']);
+    grunt.registerTask('test', ['env:dev', 'mochaTest:test']);
     grunt.registerTask('run', ['env:dev', 'jshint', 'execute:app']);
 
     // ===========================================================================

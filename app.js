@@ -1,6 +1,7 @@
 var express = require('express');
 var cfenv = require('cfenv');
 var app = express();
+module.exports = app;
 
 function initDBConnection() {
     var vcapServices = JSON.parse(process.env.VCAP_SERVICES);
