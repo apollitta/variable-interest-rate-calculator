@@ -29,7 +29,7 @@ My application is running on an IBM Bluemix server and can be viewed at investme
 Otherwise you can start a local server in order to run this application. Do this as follows:
 
 1. Download an install node.js from https://nodejs.org.
-2. Clone the code. Now open a command prompt and locate to the root folder.
+2. Take a copy of the code. Now open command prompt and locate to the root folder.
 3. Run the command ‘npm install’ to install required node modules locally.
 4. Run the command ‘grunt run’ to start the local server.
 5. Go to the URL written in the command prompt (e.g. http://localhost:6001) and you will be directed to the webpage.
