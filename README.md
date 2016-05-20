@@ -16,7 +16,7 @@ As a bank clerk, I'd like to provide accurate interest rate estimations to my cu
 
 <h2>Back of card (Technical Constraints):</h2>
 
-- Doesn't necessarily need a flashy UI (can be simple)
+- <b>Doesn't necessarily need a flashy UI (can be simple)</b>
 - Use an appropriate language/framework for the job role that you are applying for. If you are applying for a front end development role
 then we expect that you write a web application, however if you are purely a backend developer, we will accept the application running
 from the terminal, as well as from tests.
